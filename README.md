@@ -10,6 +10,18 @@ For developers, it is a remote test bench: Claude can download builds to the SD 
 
 > Unofficial community project. Not made or endorsed by Anthropic. Claude is an AI and can make mistakes: **back up your SD card** before asking it to change things.
 
+## Is my Claude account safe?
+
+Yes: the app never touches your Claude account, nor the Google or Apple account you may use to sign in to Claude.
+
+- **You sign in only to Claude itself**, in the Claude app or on claude.ai, as always. The Miyoo, this app and its relay never see your email, password or sign-in.
+- **It uses Claude's standard custom connectors** (an [MCP](https://modelcontextprotocol.io) server), added in Claude's *Settings > Connectors* like any other connector. The pairing page only asks for the 6-digit code shown on the Miyoo.
+- **The access goes one way: Claude to the Miyoo.** The connector gives Claude tools for this Miyoo (screen, files, buttons, commands) and receives only what Claude sends to those tools. It cannot read your chats, your other connectors or anything else in your account.
+- **You can cut it off at any time**: *Settings > Disconnect every Claude* on the Miyoo, or remove the connector in Claude's settings.
+- **Everything is open source**, the app and the relay, both in this repository. You can also [run your own relay](#building).
+
+What the connector *can* do is act on the Miyoo, and that is what the permissions, the plan dialog and the backups in [You stay in control](#you-stay-in-control) are for.
+
 ## What you need
 
 - A **Miyoo Mini Plus** or **Miyoo Mini Flip** (the models with Wi-Fi), with **OnionOS** or **RedOnion**.
@@ -78,7 +90,7 @@ The app checks for a new version once each time the Miyoo is turned on (with Wi-
 
 ## How it works
 
-The Miyoo cannot be reached directly from the internet, so the app keeps one secure connection open to a small relay (a Cloudflare Worker, in [`server/`](server)). Claude's connector talks to the same relay, which passes the requests to the Miyoo and the answers back. The relay keeps only what pairing needs (an ID and a hashed key for each device); it does not keep your files or messages.
+The Miyoo cannot be reached directly from the internet, so the app keeps one secure connection open to a small relay (a Cloudflare Worker, in [`server/`](server)). Claude's connector talks to the same relay, which passes the requests to the Miyoo and the answers back. The relay keeps only what the connection needs: for each Miyoo, an ID, a hashed key, the list of its tools and a short summary (model, system version, battery, free space), plus the connector's tokens, which Cloudflare's OAuth library stores only as hashes. Your files and messages pass through it but are not kept.
 
 ## Building
 
