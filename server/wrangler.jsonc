@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "claude-miyoo",
+	"name": "miyoo-relay",
 	"main": "src/index.js",
 	"compatibility_date": "2026-11-01",
 	"compatibility_flags": [
@@ -31,9 +31,15 @@
 	"kv_namespaces": [
 		{
 			"binding": "OAUTH_KV",
-			"id": "1defaa58d0214ec093fbbe1385c68e8a"
+			"id": "REPLACE_WITH_YOUR_KV_ID"
 		}
 	],
+	"vars": {
+		// only Claude's connector may sign in (comma-separated host names)
+		"ALLOWED_REDIRECT_HOSTS": "claude.ai,claude.com",
+		// how many Miyoos may register on this relay
+		"MAX_DEVICES": "5"
+	},
 	"preview_urls": false,
 	"observability": {
 		"enabled": true

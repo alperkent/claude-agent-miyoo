@@ -1,5 +1,7 @@
 # Claude Agent for Miyoo Mini
 
+> **This fork runs on its own relay and its own builds.** See [docs/SELF_HOSTING.md](docs/SELF_HOSTING.md) to publish the relay, build the app with GitHub Actions and switch a Miyoo over from the original relay.
+
 Let Claude look at, fix and set up your Miyoo Mini Plus or Mini Flip, from the Claude app on your phone or computer.
 
 ![Claude Agent on a Miyoo Mini Plus](docs/screenshot.png)
@@ -100,7 +102,7 @@ The app is written in C, with no libraries besides the ones `build.sh` downloads
 2. Inside it, run `sh build.sh`. The app folder is written to `package/App/ClaudeAgent/`.
 3. `make_release.sh` builds and packs the release zip.
 
-To use your own relay: `server/deploy.sh` publishes it on your Cloudflare account (the free plan is enough) and writes its address to `server.txt`; the next build uses that address.
+To use your own relay: `server/deploy.sh` publishes it on your Cloudflare account (the free plan is enough) and writes its address to `server.txt`; the next build uses that address. `UPDATE_REPO` (or `update_repo.txt`) sets where the app looks for updates. GitHub Actions builds the app without Docker on your computer; see [docs/SELF_HOSTING.md](docs/SELF_HOSTING.md).
 
 ## Credits
 

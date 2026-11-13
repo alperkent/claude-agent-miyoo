@@ -6,7 +6,7 @@
 
 extern char g_home[];
 
-#define AGENT_VERSION "1.0.1"
+#define AGENT_VERSION "1.0.1.1"
 #define UPDATE_STATUS "/tmp/claude_agent_update" /* state=, version=, note=... written by "update" */
 int update_main(int argc, char **argv);
 

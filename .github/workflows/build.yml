@@ -1,0 +1,86 @@
+# Tests the relay and builds the Miyoo app from this repository's source.
+# Pushing a tag like v1.0.1.1 (equal to AGENT_VERSION in src/common.h)
+# publishes a release whose zip the app can install as an update.
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  relay:
+    name: Relay tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --no-fund --no-audit
+      - run: npm test
+
+  app:
+    name: Miyoo app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Relay address built into the app
+        env:
+          RELAY_URL: ${{ vars.RELAY_URL }}
+        run: |
+          if [ -n "$RELAY_URL" ]; then echo "$RELAY_URL" > server.txt; fi
+          cat server.txt 2>/dev/null || echo "no RELAY_URL repository variable: the app will need config/server.txt on the SD card"
+      - name: Build in the Miyoo Mini toolchain
+        run: |
+          docker run --rm -v "$PWD":/root/workspace -w /root/workspace \
+            -e UPDATE_REPO=${{ github.repository }} \
+            aemiii91/miyoomini-toolchain@sha256:e5123590ad75d27f0f4c91196e3119a255cad45f3ae15243e29a8e0a2ec50132 \
+            sh build.sh
+          sudo chown -R "$(id -u):$(id -g)" package third_party
+      - name: Pack the release zip
+        id: pack
+        run: |
+          V=$(grep -o 'AGENT_VERSION "[^"]*"' src/common.h | cut -d'"' -f2)
+          if [ "${GITHUB_REF_TYPE}" = tag ] && [ "${GITHUB_REF_NAME}" != "v$V" ]; then
+            echo "tag ${GITHUB_REF_NAME} does not match AGENT_VERSION $V"; exit 1
+          fi
+          P=package/App/ClaudeAgent
+          S=dist/stage/App/ClaudeAgent
+          mkdir -p $S/lang
+          for f in claude-agent cacert.pem config.json launch.sh wifi.sh icon.png; do cp "$P/$f" "$S/"; done
+          cp "$P"/lang/*.txt "$S/lang/"
+          Z="ClaudeAgent-v$V.zip"
+          (cd dist/stage && zip -qr "../$Z" App)
+          file "$P/claude-agent"
+          sha256sum "dist/$Z"
+          echo "zip=$Z" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ClaudeAgent
+          path: dist/${{ steps.pack.outputs.zip }}
+
+  release:
+    name: Release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [relay, app]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ClaudeAgent
+          path: dist
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.zip --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --notes-file RELEASE_NOTES.md

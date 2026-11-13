@@ -54,7 +54,8 @@
 #include "psa/crypto.h"
 
 #ifndef DEFAULT_SERVER
-#define DEFAULT_SERVER "https://claude-miyoo.workers.dev"
+/* no built-in relay: set one with server.txt at build time or config/server.txt on the SD card */
+#define DEFAULT_SERVER "https://relay-not-set.invalid"
 #endif
 
 extern char g_home[];
