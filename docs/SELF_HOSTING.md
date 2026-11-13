@@ -13,7 +13,7 @@ This fork is set up so that nothing between Claude and your Miyoo belongs to any
 | Relay | the author's `claude-miyoo.miyoo-agent.workers.dev` | yours, `https://miyoo-relay.<you>.workers.dev` |
 | Who can sign in to the relay | any OAuth client | only Claude (`claude.ai` / `claude.com` callbacks), see `ALLOWED_REDIRECT_HOSTS` |
 | Who can register a Miyoo | anyone | at most `MAX_DEVICES` (5) Miyoos |
-| KV storage id | the author's id, hard-coded | created on your account by `deploy.sh` |
+| KV storage id | the author's id, hard-coded | created on your account by `deploy.mjs` |
 | Built-in relay in the app | the author's | none (set by `server.txt` at build time, or `config/server.txt` on the SD card) |
 | Updates | `cacuracaptors/claude-agent-miyoo` | this repository |
 
@@ -21,12 +21,12 @@ The relay protocol and the app's behaviour on the Miyoo are unchanged. `server/t
 
 ## 1. Publish the relay (about 15 minutes, once)
 
-You need a computer with [Node.js](https://nodejs.org) 20 or newer and a free [Cloudflare](https://dash.cloudflare.com/sign-up) account.
+You need a computer (Windows, macOS or Linux) with [Node.js](https://nodejs.org) 20 or newer and a free [Cloudflare](https://dash.cloudflare.com/sign-up) account. On Windows, run it in PowerShell; no WSL or Git Bash needed.
 
 ```sh
 git clone https://github.com/alperkent/claude-agent-miyoo
 cd claude-agent-miyoo
-bash server/deploy.sh
+node server/deploy.mjs
 ```
 
 The script signs you in to Cloudflare in the browser, creates the storage the relay needs, publishes it and prints two addresses:
@@ -76,7 +76,7 @@ Delete `config/server.txt` and `config/update_repo.txt` (with the original build
 
 ## Settings of the relay
 
-In `server/wrangler.jsonc`, under `vars`, then run `bash server/deploy.sh` again:
+In `server/wrangler.jsonc`, under `vars`, then run `node server/deploy.mjs` again:
 
 - `ALLOWED_REDIRECT_HOSTS`: sites allowed to receive the sign-in. Keep `claude.ai,claude.com` unless you want another MCP client to connect.
 - `MAX_DEVICES`: how many Miyoos may register. Each restart of the app after `config/identity.json` is deleted counts as a new one.
