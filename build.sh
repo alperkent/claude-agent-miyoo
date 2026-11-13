@@ -5,7 +5,8 @@
 #   cJSON (MIT), stb_image_write (public domain), QR Code generator (MIT), Mbed TLS 3.6.7 (Apache-2.0)
 #   and the Mozilla list of certificate authorities (from certifi, MPL-2.0).
 # If the file server.txt exists next to this script, its address becomes the
-# relay the agent uses by default.
+# relay the agent uses by default. UPDATE_REPO (environment, or update_repo.txt)
+# sets the GitHub repository the app takes updates from.
 # Result: package/App/ClaudeAgent/ (the whole app folder for the SD card)
 set -e
 cd "$(dirname "$0")"
@@ -61,6 +62,16 @@ if [ -f server.txt ]; then
     SERVER=$(head -n 1 server.txt | tr -d '\r\n ')
     DEF="-DDEFAULT_SERVER=\"$SERVER\""
     echo "relay: $SERVER"
+fi
+# Repository the app checks for updates (owner/name). Without it the app
+# follows the original author's releases.
+UPDATE_REPO=${UPDATE_REPO:-}
+if [ -z "$UPDATE_REPO" ] && [ -f update_repo.txt ]; then
+    UPDATE_REPO=$(head -n 1 update_repo.txt | tr -d '\r\n ')
+fi
+if [ -n "$UPDATE_REPO" ]; then
+    DEF="$DEF -DUPDATE_REPO=\"$UPDATE_REPO\""
+    echo "updates from: $UPDATE_REPO"
 fi
 
 OUT=package/App/ClaudeAgent

@@ -9,10 +9,34 @@
 import { OAuthProvider } from '@cloudflare/workers-oauth-provider';
 import { DurableObject } from 'cloudflare:workers';
 
-const VERSION = '0.4.0';
+const VERSION = '0.4.0-self';
 const SCOPE = 'miyoo';
 const PAIR_CODE_TTL_MS = 10 * 60 * 1000;
 const MAX_TOOL_WAIT_MS = 720 * 1000;
+
+// Self-hosted hardening (both can be changed in wrangler.jsonc "vars"):
+// - only these sites may receive the sign-in (Claude's connector callback);
+//   any other OAuth client is refused before the pairing page is shown
+const DEFAULT_ALLOWED_REDIRECT_HOSTS = 'claude.ai,claude.com';
+// - at most this many Miyoos may register on this relay
+const DEFAULT_MAX_DEVICES = 5;
+
+function allowedRedirect(env, redirectUri) {
+  const hosts = String(env.ALLOWED_REDIRECT_HOSTS || DEFAULT_ALLOWED_REDIRECT_HOSTS)
+    .split(',')
+    .map((h) => h.trim().toLowerCase())
+    .filter(Boolean);
+  if (hosts.includes('*')) return true;
+  let u;
+  try {
+    u = new URL(redirectUri);
+  } catch {
+    return false;
+  }
+  if (u.protocol !== 'https:') return false;
+  const host = u.hostname.toLowerCase();
+  return hosts.some((h) => host === h || host.endsWith('.' + h));
+}
 
 const SERVER_INSTRUCTIONS = `These tools control a Miyoo Mini handheld (Linux, ARM, OnionOS or RedOnion) owned by the user you are talking to.
 - Start with device_info and a screenshot to see the state of the device.
@@ -192,6 +216,15 @@ export class DeviceRoom extends DurableObject {
 /* ------------------------------------------- PairingIndex (one for the whole relay) */
 
 export class PairingIndex extends DurableObject {
+  // Counts registered Miyoos so a stranger who finds the relay address
+  // cannot fill it with devices.
+  async reserveDevice(max) {
+    const n = (await this.ctx.storage.get('devices')) || 0;
+    if (n >= max) return false;
+    await this.ctx.storage.put('devices', n + 1);
+    return true;
+  }
+
   async create(deviceId) {
     const now = Date.now();
     // drop expired codes
@@ -343,6 +376,10 @@ const defaultHandler = {
     }
 
     if (url.pathname === '/api/device/register' && request.method === 'POST') {
+      const max = Number(env.MAX_DEVICES) > 0 ? Number(env.MAX_DEVICES) : DEFAULT_MAX_DEVICES;
+      if (!(await pairingStub(env).reserveDevice(max))) {
+        return json({ error: 'this relay is full; raise MAX_DEVICES in wrangler.jsonc' }, 403);
+      }
       const deviceId = randomHex(16);
       const secret = randomHex(32);
       const ok = await deviceStub(env, deviceId).init(await sha256Hex(secret), deviceId);
@@ -361,6 +398,9 @@ const defaultHandler = {
       try {
         if (request.method === 'GET') {
           const authReq = await oauth.parseAuthRequest(request);
+          if (!allowedRedirect(env, authReq.redirectUri)) {
+            return html(errorPage('This relay only accepts connections from Claude.'), 403);
+          }
           const details = await oauth.describeConsent(authReq);
           const consent = await oauth.beginConsent(authReq);
           return html(pairPage(consent.handle, details.clientName || 'Claude'), 200, consent.headers);
@@ -376,6 +416,9 @@ const defaultHandler = {
           const r = await pairingStub(env).redeem(code, 'h:' + (await sha256Hex(handle)));
           if (r.error) return html(pairPage(handle, 'Claude', r.error), 400);
           const approved = await oauth.approveConsent(request, handle, { scope: [SCOPE] });
+          if (!allowedRedirect(env, approved.request.redirectUri)) {
+            return html(errorPage('This relay only accepts connections from Claude.'), 403);
+          }
           const room = deviceStub(env, r.deviceId);
           const gen = await room.generation();
           const client = await oauth.lookupClient(approved.request.clientId).catch(() => null);

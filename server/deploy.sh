@@ -1,34 +1,49 @@
 #!/bin/bash
-# Publishes the Claude Agent relay on your Cloudflare account (free plan).
-# Run in WSL:  bash ~/fallout-miyoo/claude-agent/server/deploy.sh
-# The first time it opens the browser to sign in to Cloudflare.
-# At the end it writes the relay address to ../server.txt, so the next
-# build of the agent uses it by default.
-set -e
+# Publishes your own Claude Agent relay on your Cloudflare account (the free plan is enough).
+#
+#   bash server/deploy.sh
+#
+# The first time it opens the browser to sign in to Cloudflare, creates the
+# storage the relay needs (one KV namespace) and writes its id to
+# wrangler.jsonc. At the end it prints the relay address and writes it to
+# ../server.txt, so the next build of the app uses it by default.
+#
+# Change the "name" in wrangler.jsonc first if you want a different address
+# (https://<name>.<your-subdomain>.workers.dev).
+set -euo pipefail
 cd "$(dirname "$0")"
 [ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
-command -v node > /dev/null || { echo "ERRO: o Node.js nao esta instalado"; exit 1; }
-md5sum src/index.js
+command -v node > /dev/null || { echo "ERROR: Node.js is not installed (https://nodejs.org, version 20 or newer)"; exit 1; }
 
-echo "== instalando as ferramentas (so demora na primeira vez)"
-npm install --no-fund --no-audit --loglevel=error
+echo "== installing the tools (slow only the first time)"
+npm ci --no-fund --no-audit --loglevel=error
 
 if ! npx wrangler whoami 2>&1 | grep -qi "logged in"; then
-    echo "== entrando na sua conta Cloudflare (vai abrir o navegador)"
+    echo "== signing in to Cloudflare (a browser window opens)"
     npx wrangler login
 fi
 
-echo "== publicando"
+if grep -q REPLACE_WITH_YOUR_KV_ID wrangler.jsonc; then
+    echo "== creating the OAUTH_KV storage"
+    OUT=$(npx wrangler kv namespace create OAUTH_KV 2>&1) || { echo "$OUT"; exit 1; }
+    ID=$(echo "$OUT" | grep -oE '[0-9a-f]{32}' | head -n 1)
+    [ -n "$ID" ] || { echo "$OUT"; echo "ERROR: could not read the new KV id"; exit 1; }
+    sed -i.bak "s/REPLACE_WITH_YOUR_KV_ID/$ID/" wrangler.jsonc && rm -f wrangler.jsonc.bak
+    echo "   KV id $ID written to wrangler.jsonc"
+fi
+
+echo "== publishing"
 OUT=$(mktemp)
 WRANGLER_OUTPUT_FILE_PATH=$OUT npx wrangler deploy
-URL=$(grep -o 'https://[A-Za-z0-9.-]*workers\.dev' "$OUT" | head -n 1)
+URL=$(grep -o 'https://[A-Za-z0-9.-]*workers\.dev' "$OUT" | head -n 1 || true)
 rm -f "$OUT"
-[ -n "$URL" ] || { echo "ERRO: nao achei o endereco do servidor na saida do wrangler"; exit 1; }
+[ -n "$URL" ] || { echo "ERROR: could not find the relay address in wrangler's output"; exit 1; }
 
-echo "== gravando o endereco publico ($URL)"
-npx wrangler deploy --var PUBLIC_ORIGIN:$URL > /dev/null
+echo "== saving the public address ($URL)"
+npx wrangler deploy --var "PUBLIC_ORIGIN:$URL" > /dev/null
 echo "$URL" > ../server.txt
 
 echo
-echo "PRONTO."
-echo "Endereco do conector: $URL/mcp"
+echo "DONE."
+echo "Relay address (for the Miyoo):  $URL"
+echo "Connector address (for Claude): $URL/mcp"

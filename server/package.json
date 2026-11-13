@@ -6,5 +6,11 @@
   "dependencies": {
     "@cloudflare/workers-oauth-provider": "1.2.4",
     "wrangler": "4.160.1"
+  },
+  "scripts": {
+    "test": "bash test/run.sh"
+  },
+  "devDependencies": {
+    "ws": "8.23.0"
   }
 }
