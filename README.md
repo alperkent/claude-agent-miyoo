@@ -2,6 +2,8 @@
 
 Let Claude look at, fix and set up your Miyoo Mini Plus or Mini Flip, from the Claude app on your phone or computer.
 
+![Claude Agent on a Miyoo Mini Plus](docs/screenshot.png)
+
 Ask things like *"my game does not open"*, *"why is the battery draining so fast?"* or *"install this port and set it up for me"*: Claude checks the device, explains what it found, and, when you allow it, makes the changes itself. Every change is kept as a copy and can be undone.
 
 For developers, it is a remote test bench: Claude can download builds to the SD card, launch your game, replay button presses with exact timing, take timed screenshots, watch logs, measure performance and catch crashes, all by itself.
