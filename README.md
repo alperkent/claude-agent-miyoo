@@ -40,6 +40,17 @@ Tip: in Claude's settings, the connector has an "Always allow" option, if you do
 - **Only while the app is open** — by default Claude can work only while the app is on screen. *Keep working after leaving the app* (Off / Until restart / Always) lets it keep going, for example to open and test a game; with *Off*, Claude asks on the Miyoo when it needs it.
 - **Disconnect** — *Settings > Disconnect every Claude* removes access from every connected Claude account.
 
+## Plugins
+
+Plugins add new tools to Claude, made for one job: a test routine for your game, a log analyzer, a benchmark, a tool to check or fix a specific port, anything a script or a program can do on the Miyoo.
+
+- **Anyone can make one.** A plugin is a folder in `App/ClaudeAgent/plugins/<name>/` with a script or a program and a `plugin.json` that says what it does, which permission it needs and what inputs it takes. It runs on the Miyoo with full access, receives Claude's arguments and returns text or pictures.
+- **Claude can make them too.** With *Developer tools* on, when a task needs a tool that does not exist yet, Claude can write the plugin itself and suggest it. Nothing is installed until you approve it on the Miyoo.
+- **Same control as everything else.** Each plugin appears in *Settings > Developer options > Plugins*, where it can be turned off, removed, or set to ask every time, ask once or not ask.
+- **Share them.** A plugin is just a folder: copy it to another SD card and it works there too.
+
+To see the full format, ask Claude to show the plugin docs (the `plugins` tool with `docs`).
+
 ## For developers
 
 *Settings > Developer options > Developer tools* adds these tools for Claude:
@@ -53,9 +64,7 @@ Tip: in Claude's settings, the connector has an "Always allow" option, if you do
 | `screen_capture` | Screenshots every N ms, for a while |
 | `watch_file` | Follows a log file and stops on the words you choose |
 | `snapshot` | Saves a folder (like a save folder) and restores it later |
-| `plugin_create` / `plugins` | Plugins: new tools written by you or by Claude |
-
-**Plugins** are small programs or scripts in `App/ClaudeAgent/plugins/<name>/`, described by a `plugin.json` (name, what it does, which permission it needs, its inputs). They run on the Miyoo with full access, receive Claude's arguments and return text or pictures. Each plugin appears in *Settings > Developer options > Plugins*, where it can be turned off or set to ask every time, ask once or not ask. Claude can also write a plugin when a task needs one; you approve it on the Miyoo before it is installed.
+| `plugin_create` / `plugins` | Creates and manages [plugins](#plugins) |
 
 ## Languages
 
