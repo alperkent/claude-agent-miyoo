@@ -1,0 +1,6 @@
+{
+    "label": "Claude Agent",
+    "icon": "icon.png",
+    "launch": "launch.sh",
+    "description": "Get help from Claude with anything on this Miyoo"
+}

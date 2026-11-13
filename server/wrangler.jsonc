@@ -1,0 +1,41 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "claude-miyoo",
+	"main": "src/index.js",
+	"compatibility_date": "2026-11-01",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "DEVICE",
+				"class_name": "DeviceRoom"
+			},
+			{
+				"name": "PAIRING",
+				"class_name": "PairingIndex"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": [
+				"DeviceRoom",
+				"PairingIndex"
+			]
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "OAUTH_KV",
+			"id": "1defaa58d0214ec093fbbe1385c68e8a"
+		}
+	],
+	"preview_urls": false,
+	"observability": {
+		"enabled": true
+	}
+}

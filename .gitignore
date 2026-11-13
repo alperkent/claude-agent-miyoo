@@ -1,0 +1,16 @@
+# build output
+package/
+dist/
+# downloaded and compiled by build.sh
+third_party/
+# relay server tools
+server/node_modules/
+server/.wrangler/
+# work files
+*.patch
+pac.*
+pbc.*
+md5.txt
+etapa*.py
+instalar.sh
+PROGRESSO*.txt

@@ -1,0 +1,10 @@
+{
+  "name": "claude-miyoo-relay",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "1.2.4",
+    "wrangler": "4.160.1"
+  }
+}

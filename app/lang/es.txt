@@ -1,0 +1,683 @@
+# Claude Agent: Español
+# Pairs of lines: the English text, then its translation. Keep %s and %d as they are.
+
+CLAUDE
+CLAUDE
+
+ACTIVITY
+ACTIVIDAD
+
+Nothing here yet. To get help, open Claude on your phone or computer, start a chat with the Miyoo connector turned on, and ask anything about this Miyoo, like "my game does not open". Claude's answers will also appear here.
+Aún no hay nada. Para pedir ayuda, abre Claude en tu móvil o en tu ordenador, empieza un chat con el conector de Miyoo activado y pregunta lo que quieras sobre esta Miyoo, como "mi juego no abre". Las respuestas de Claude también aparecerán aquí.
+
+Everything Claude does on this Miyoo will be listed here, step by step.
+Todo lo que Claude haga en esta Miyoo aparecerá aquí, paso a paso.
+
+newer below
+más recientes abajo
+
+Keeps working after you leave the app
+Sigue funcionando al salir de la app
+
+Switch
+Cambiar
+
+Scroll
+Desplazar
+
+Settings
+Ajustes
+
+Exit
+Salir
+
+Starting
+Iniciando
+
+No Wi-Fi on this Miyoo
+Esta Miyoo no tiene Wi-Fi
+
+Waiting for Wi-Fi
+Esperando el Wi-Fi
+
+Turning on Wi-Fi
+Activando el Wi-Fi
+
+No Wi-Fi: check Settings > Network
+Sin Wi-Fi: mira Ajustes > Red
+
+Connected
+Conectado
+
+Online
+En línea
+
+Connecting
+Conectando
+
+Server not reachable
+Servidor no disponible
+
+Connect this Miyoo to Claude
+Conecta esta Miyoo a Claude
+
+This lets Claude see and fix things on this Miyoo. You choose what it may do.
+Así Claude puede ver y arreglar cosas en esta Miyoo. Tú eliges lo que puede hacer.
+
+Scan with your phone
+Escanéalo con el móvil
+
+YOUR CODE
+TU CÓDIGO
+
+Scan the QR code, or open this site:
+Escanea el código QR o abre esta web:
+
+Follow the steps on that page.
+Sigue los pasos de esa página.
+
+When asked, type the code above.
+Cuando te lo pida, escribe el código de arriba.
+
+You only do this once. The code changes every 10 minutes.
+Solo se hace una vez. El código cambia cada 10 minutos.
+
+No phone? Open the same site on any computer.
+¿Sin móvil? Abre la misma web en cualquier ordenador.
+
+See the screen
+Ver la pantalla
+
+Read files
+Leer archivos
+
+Change and delete files
+Cambiar y borrar archivos
+
+Press buttons
+Pulsar botones
+
+Run commands
+Ejecutar comandos
+
+Keep working in the background
+Funcionar en segundo plano
+
+Keep working after leaving the app
+Seguir al salir de la app
+
+Show a new pairing code
+Mostrar un código nuevo
+
+Developer options
+Opciones de desarrollador
+
+Developer tools
+Herramientas de desarrollador
+
+Check for updates
+Buscar actualizaciones
+
+Undo changes made by Claude
+Deshacer cambios de Claude
+
+Plugins
+Plugins
+
+Disconnect every Claude
+Desconectar todos los Claude
+
+Settings  >  Developer options
+Ajustes  >  Opciones de desarrollador
+
+Settings  >  Undo changes
+Ajustes  >  Deshacer cambios
+
+Developer options  >  Plugins
+Opciones de desarrollador  >  Plugins
+
+Ask every time
+Preguntar siempre
+
+Ask once
+Preguntar una vez
+
+Don't ask
+No preguntar
+
+Until restart
+Hasta reiniciar
+
+Always
+Siempre
+
+Off
+Apagado
+
+On
+Activado
+
+Until exit
+Hasta salir
+
+Change
+Cambiar
+
+Back
+Volver
+
+Remove
+Quitar
+
+Undo
+Deshacer
+
+Claude looking at your screen (screenshots). Ask once: asks the first time after you open this app. Ask every time: asks before each one. Don't ask: never asks. Recommended: Ask once.
+Claude mirando tu pantalla (capturas). Preguntar una vez: pregunta la primera vez después de abrir la app. Preguntar siempre: pregunta antes de cada una. No preguntar: nunca pregunta. Recomendado: Preguntar una vez.
+
+Claude opening and reading files on the SD card (settings, logs, saves) to find problems. Ask once: asks the first time after you open this app. Recommended: Ask once.
+Claude abriendo y leyendo archivos de la tarjeta SD (ajustes, registros, partidas) para encontrar problemas. Preguntar una vez: pregunta la primera vez después de abrir la app. Recomendado: Preguntar una vez.
+
+Claude creating, changing and deleting files. A copy of everything changed is kept, so it can be undone ("Undo changes made by Claude"). Recommended: Ask once.
+Claude creando, cambiando y borrando archivos. Se guarda una copia de todo lo que cambia, así que se puede deshacer ("Deshacer cambios de Claude"). Recomendado: Preguntar una vez.
+
+Claude pressing the buttons for you, as if you did (and recording the buttons you press, for developers). Recommended: Ask once.
+Claude pulsando los botones por ti, como si fueras tú (y grabando los botones que pulsas, para desarrolladores). Recomendado: Preguntar una vez.
+
+Claude running system commands. This is the most powerful permission: it can do anything on this Miyoo. Recommended: Ask once, or Ask every time.
+Claude ejecutando comandos del sistema. Es el permiso más potente: puede hacer cualquier cosa en esta Miyoo. Recomendado: Preguntar una vez, o Preguntar siempre.
+
+Claude working after you leave this app (for example to open and test a game). Ask every time: you confirm each time. Until restart: allowed until the Miyoo is turned off. Recommended: Ask every time.
+Claude trabajando después de que salgas de la app (por ejemplo, para abrir y probar un juego). Preguntar siempre: lo confirmas cada vez. Hasta reiniciar: permitido hasta que se apague la Miyoo. Recomendado: Preguntar siempre.
+
+Shows a new connection code. Use it to connect another Claude account, or if Claude says the connection was turned off.
+Muestra un código de conexión nuevo. Úsalo para conectar otra cuenta de Claude, o si Claude dice que la conexión se desactivó.
+
+Removes the access of every Claude account connected to this Miyoo. To use the app again, you will connect with a new code.
+Quita el acceso a todas las cuentas de Claude conectadas a esta Miyoo. Para volver a usar la app, conectarás con un código nuevo.
+
+Options for people who make or test games and apps. Most people do not need them.
+Opciones para quien crea o prueba juegos y apps. La mayoría de la gente no las necesita.
+
+Lets Claude download files from the internet to the SD card, record the buttons you press and replay them with exact timing, and take timed screenshots. Works in new Claude chats. Recommended: Off.
+Permite a Claude descargar archivos de internet a la tarjeta SD, grabar los botones que pulsas y repetirlos con el tiempo exacto, y hacer capturas en momentos marcados. Funciona en chats nuevos de Claude. Recomendado: Apagado.
+
+Looks for a new version of Claude Agent on the internet (Wi-Fi needed). The app also checks by itself once each time the Miyoo is turned on.
+Busca una versión nueva de Claude Agent en internet (necesita Wi-Fi). La app también lo comprueba sola una vez cada vez que se enciende la Miyoo.
+
+Everything Claude changed, created or deleted, newest first. Pick one and press A to put it back as it was before.
+Todo lo que Claude cambió, creó o borró, de lo más nuevo a lo más antiguo. Elige uno y pulsa A para dejarlo como estaba.
+
+Extra tools made by developers or by Claude. Each one can be turned off, or set to ask every time, ask once, or not ask.
+Herramientas extra hechas por desarrolladores o por Claude. Cada una se puede apagar, o configurar para preguntar siempre, preguntar una vez o no preguntar.
+
+Less security
+Menos seguridad
+
+%s New setting: %s.
+%s Nuevo ajuste: %s.
+
+Confirm
+Confirmar
+
+Cancel
+Cancelar
+
+Claude will see your screen without asking you first.
+Claude verá tu pantalla sin preguntarte antes.
+
+Claude will read your files without asking you first.
+Claude leerá tus archivos sin preguntarte antes.
+
+Claude will change and delete files without asking you first. Copies are kept, so changes can be undone.
+Claude cambiará y borrará archivos sin preguntarte antes. Se guardan copias, así que los cambios se pueden deshacer.
+
+Claude will press buttons without asking you first.
+Claude pulsará botones sin preguntarte antes.
+
+Claude will run system commands without asking you first. This can change anything on this Miyoo.
+Claude ejecutará comandos del sistema sin preguntarte antes. Esto puede cambiar cualquier cosa en esta Miyoo.
+
+Claude will keep working after you leave the app without asking you first. Meant for developers testing their games.
+Claude seguirá trabajando después de que salgas de la app sin preguntarte antes. Pensado para desarrolladores que prueban sus juegos.
+
+Claude will be able to download files from the internet to your SD card and to replay button presses by itself. Meant for developers.
+Claude podrá descargar archivos de internet a tu tarjeta SD y repetir pulsaciones de botones por su cuenta. Pensado para desarrolladores.
+
+Allow
+Permitir
+
+Deny
+Denegar
+
+Allow: %s?
+¿Permitir: %s?
+
+%s %s If you did not ask Claude for anything, press B.
+%s %s Si no le pediste nada a Claude, pulsa B.
+
+If you allow it, it stays allowed until you close this app.
+Si lo permites, seguirá permitido hasta que cierres esta app.
+
+ If you allow it, it stays allowed until you close this app.
+ Si lo permites, seguirá permitido hasta que cierres esta app.
+
+You will be asked again next time.
+La próxima vez se volverá a preguntar.
+
+Claude wants to take pictures of what is on the screen.
+Claude quiere hacer fotos de lo que hay en la pantalla.
+
+Claude wants to read files and folders on the SD card.
+Claude quiere leer archivos y carpetas de la tarjeta SD.
+
+Claude wants to create, change or delete files. A copy of every changed or deleted file is kept in the app's backups folder.
+Claude quiere crear, cambiar o borrar archivos. Se guarda una copia de cada archivo cambiado o borrado en la carpeta de copias de la app.
+
+Claude wants to press the buttons of this Miyoo, as if you did, or record the buttons you press to replay them later.
+Claude quiere pulsar los botones de esta Miyoo como si fueras tú, o grabar los botones que pulsas para repetirlos después.
+
+Claude wants to run system commands. Commands can do anything on this Miyoo, including what the other permissions control.
+Claude quiere ejecutar comandos del sistema. Los comandos pueden hacer cualquier cosa en esta Miyoo, incluido lo que controlan los demás permisos.
+
+Keep working in the background?
+¿Funcionar en segundo plano?
+
+Claude asks to keep control of this Miyoo after you leave the app, for example to open and test a game. It ends when you turn it off in the settings or restart the Miyoo.
+Claude pide mantener el control de esta Miyoo después de que salgas de la app, por ejemplo para abrir y probar un juego. Termina cuando lo apagues en los ajustes o reinicies la Miyoo.
+
+Claude wants to use the plugin "%s": %s It can do what "%s" allows.%s
+Claude quiere usar el plugin "%s": %s Puede hacer lo que permite "%s".%s
+
+Add a tool from Claude?
+¿Añadir una herramienta de Claude?
+
+Update a tool from Claude?
+¿Actualizar una herramienta de Claude?
+
+Claude made a new tool "%s": %s It can do what "%s" allows. You can turn it off or remove it in Settings > Developer options > Plugins.
+Claude creó una herramienta nueva, "%s": %s Puede hacer lo que permite "%s". Puedes apagarla o quitarla en Ajustes > Opciones de desarrollador > Plugins.
+
+Claude made a new version of the tool "%s": %s It can do what "%s" allows. You can turn it off or remove it in Settings > Developer options > Plugins.
+Claude creó una versión nueva de la herramienta "%s": %s Puede hacer lo que permite "%s". Puedes apagarla o quitarla en Ajustes > Opciones de desarrollador > Plugins.
+
+No plugins yet. Claude can make one when a task needs it.
+Aún no hay plugins. Claude puede crear uno cuando una tarea lo necesite.
+
+%s It can: %s. Folder: plugins/%s
+%s Puede: %s. Carpeta: plugins/%s
+
+Claude will use the plugin "%s" without asking you first.
+Claude usará el plugin "%s" sin preguntarte antes.
+
+Remove plugin?
+¿Quitar el plugin?
+
+Remove the plugin "%s"? A copy is kept in the app's backups folder.
+¿Quitar el plugin "%s"? Se guarda una copia en la carpeta de copias de la app.
+
+Claude has not changed anything on this Miyoo yet.
+Claude aún no ha cambiado nada en esta Miyoo.
+
+Created
+Creado
+
+Deleted
+Borrado
+
+Changed
+Cambiado
+
+(undone)
+(deshecho)
+
+%s (%s). Press A to undo it.
+%s (%s). Pulsa A para deshacerlo.
+
+Undo this change?
+¿Deshacer este cambio?
+
+Remove this file, which Claude created?
+¿Quitar este archivo, que creó Claude?
+
+Bring back what Claude deleted?
+¿Recuperar lo que borró Claude?
+
+Put back the version from before this change?
+¿Volver a la versión de antes de este cambio?
+
+This change was already undone.
+Este cambio ya se deshizo.
+
+Update available
+Actualización disponible
+
+Claude Agent %s is available (you have %s). It takes about a minute, with Wi-Fi. Your settings and connection stay as they are.
+Claude Agent %s está disponible (tienes la %s). Tarda más o menos un minuto, con Wi-Fi. Tus ajustes y la conexión se quedan como están.
+
+Update now
+Actualizar ahora
+
+Later
+Más tarde
+
+Updates
+Actualizaciones
+
+You have the latest version (%s).
+Ya tienes la versión más reciente (%s).
+
+Updating to %s. %s Do not turn the Miyoo off.
+Actualizando a la %s. %s No apagues la Miyoo.
+
+Updated to %s. Restarting the app...
+Actualizado a la %s. Reiniciando la app...
+
+Something went wrong.
+Algo salió mal.
+
+Checking for updates...
+Buscando actualizaciones...
+
+Close
+Cerrar
+
+Downloading...
+Descargando...
+
+Installing...
+Instalando...
+
+No release published yet.
+Aún no hay ninguna versión publicada.
+
+Could not reach GitHub. Is Wi-Fi on?
+No se pudo conectar con GitHub. ¿Está el Wi-Fi activado?
+
+GitHub gave an unexpected answer.
+GitHub dio una respuesta inesperada.
+
+The new version has no file to install yet.
+La versión nueva aún no tiene archivo para instalar.
+
+Could not write to the SD card.
+No se pudo escribir en la tarjeta SD.
+
+The download did not finish. Try again later.
+La descarga no terminó. Inténtalo más tarde.
+
+The download arrived damaged. Try again later.
+La descarga llegó dañada. Inténtalo más tarde.
+
+The update package is not valid.
+El paquete de actualización no es válido.
+
+Could not copy the new files. Nothing changed.
+No se pudieron copiar los archivos nuevos. No cambió nada.
+
+Before you start
+Antes de empezar
+
+Claude is an AI and can make mistakes. Before you ask it to change anything, back up your SD card: copy everything on it to a computer.
+Claude es una IA y puede equivocarse. Antes de pedirle que cambie algo, haz una copia de seguridad de la tarjeta SD: copia todo su contenido a un ordenador.
+
+Claude asks before it acts, keeps a copy of every file it changes, and its changes can be undone in Settings.
+Claude pregunta antes de actuar, guarda una copia de cada archivo que cambia, y sus cambios se pueden deshacer en Ajustes.
+
+I understand
+Entendido
+
+Disconnect every Claude?
+¿Desconectar todos los Claude?
+
+Claude loses access to this Miyoo. To use it again, connect with a new code.
+Claude pierde el acceso a esta Miyoo. Para volver a usarla, conecta con un código nuevo.
+
+Disconnect
+Desconectar
+
+Setting: "%s": %s
+Ajuste: "%s": %s
+
+Setting: background without asking: %s
+Ajuste: segundo plano sin preguntar: %s
+
+Setting: developer tools: %s
+Ajuste: herramientas de desarrollador: %s
+
+Keep working after leaving the app: %s
+Seguir al salir de la app: %s
+
+Setting: plugin %s: %s
+Ajuste: plugin %s: %s
+
+Setting: plugin %s: don't ask
+Ajuste: plugin %s: no preguntar
+
+off
+apagado
+
+on
+activado
+
+on until the app closes
+activado hasta cerrar la app
+
+on until the Miyoo restarts
+activado hasta reiniciar la Miyoo
+
+always on
+siempre activado
+
+ask every time
+preguntar siempre
+
+ask once
+preguntar una vez
+
+don't ask
+no preguntar
+
+Plugin removed: %s
+Plugin quitado: %s
+
+Disconnected every Claude
+Todos los Claude desconectados
+
+Checking the device
+Revisando el dispositivo
+
+Taking a screenshot
+Haciendo una captura
+
+Pressing: %s
+Pulsando: %s
+
+Reading %s
+Leyendo %s
+
+Writing %s
+Escribiendo %s
+
+Deleting %s
+Borrando %s
+
+Listing %s
+Listando %s
+
+Looking at %s
+Mirando %s
+
+Replaying buttons%s%s
+Repitiendo botones%s%s
+
+ (timeline)
+ (secuencia)
+
+Background mode: %s
+Segundo plano: %s
+
+turn on
+activar
+
+turn off
+apagar
+
+%s: %s
+%s: %s
+
+allowed
+permitido
+
+denied
+denegado
+
+no answer
+sin respuesta
+
+Plugin %s: %s
+Plugin %s: %s
+
+added
+añadido
+
+updated
+actualizado
+
+Cancelling job %d
+Cancelando la tarea %d
+
+  downloaded %s (%.1f MB)
+  descargado %s (%.1f MB)
+
+Downloading to %s (job %d)
+Descargando a %s (tarea %d)
+
+Recording '%s' stopped: %d button events
+Grabación '%s' detenida: %d eventos de botón
+
+Recording buttons as '%s'
+Grabando los botones como '%s'
+
+Replay of %s %s: %d button events, %d screenshots
+Repetición de %s %s: %d eventos de botón, %d capturas
+
+cancelled
+cancelada
+
+done
+terminada
+
+Replaying %s (job %d)
+Repitiendo %s (tarea %d)
+
+Running: %s
+Ejecutando: %s
+
+Run ended: %s, %s
+Ejecución terminada: %s, %s
+
+Reopened Claude Agent
+Claude Agent abierto de nuevo
+
+Snapshot of %s
+Copia de %s
+
+Restored %s from a snapshot
+%s restaurado desde una copia
+
+Undo: %s
+Deshacer: %s
+
+Online: Claude can reach this Miyoo
+En línea: Claude puede acceder a esta Miyoo
+
+Connected to %s
+Conectado a %s
+
+Connection lost, trying again
+Conexión perdida, reintentando
+
+Updated Claude Agent to %s
+Claude Agent actualizado a la %s
+
+Claude's plan
+Plan de Claude
+
+Go ahead
+Adelante
+
+Not now
+Ahora no
+
+Show Claude's plan first
+Mostrar antes el plan de Claude
+
+Before a big change (several files, system settings, installing or removing something), Claude shows its plan here and waits for your OK. Recommended: On.
+Antes de un cambio grande (varios archivos, ajustes del sistema, instalar o quitar algo), Claude muestra su plan aquí y espera tu OK. Recomendado: Activado.
+
+Claude will start big changes without showing you its plan first.
+Claude empezará cambios grandes sin mostrarte antes su plan.
+
+Setting: show Claude's plan first: %s
+Ajuste: mostrar antes el plan de Claude: %s
+
+You
+Tú
+
+Empty backups?
+¿Vaciar las copias?
+
+This deletes %.1f MB of copies for good. The changes Claude made until now can no longer be undone.
+Esto borra para siempre %.1f MB de copias. Los cambios que Claude hizo hasta ahora ya no se podrán deshacer.
+
+Empty
+Vaciar
+
+Delete old backups
+Borrar copias antiguas
+
+Empty backups
+Vaciar copias
+
+The copies Claude keeps of what it changed take space on the SD card. Old ones can be deleted by themselves; after that, those changes can no longer be undone. Recommended: After 30 days.
+Las copias que Claude guarda de lo que cambió ocupan espacio en la tarjeta SD. Las antiguas se pueden borrar solas; después, esos cambios ya no se pueden deshacer. Recomendado: Después de 30 días.
+
+Deletes every copy kept in the backups folder now, to free space on the SD card. The changes Claude made until now can no longer be undone.
+Borra ahora todas las copias de la carpeta de copias, para liberar espacio en la tarjeta SD. Los cambios que Claude hizo hasta ahora ya no se podrán deshacer.
+
+Never
+Nunca
+
+After 30 days
+Después de 30 días
+
+After 7 days
+Después de 7 días
+
+Copies older than 7 days will be deleted for good, and those changes can no longer be undone.
+Las copias de más de 7 días se borrarán para siempre, y esos cambios ya no se podrán deshacer.
+
+Setting: delete old backups: %s
+Ajuste: borrar copias antiguas: %s
+
+never
+nunca
+
+after 30 days
+después de 30 días
+
+after 7 days
+después de 7 días
+
+Backups emptied: %.1f MB freed
+Copias vaciadas: %.1f MB liberados
+
+Old backups deleted: %d
+Copias antiguas borradas: %d
+
+Claude working after you leave this app (for example to open and test a game). Off: Claude asks here when it needs it. Until restart: on until the Miyoo is turned off. Always: always on, for developers. Recommended: Off.
+Claude trabajando después de que salgas de la app (por ejemplo, para abrir y probar un juego). Apagado: Claude lo pide aquí cuando lo necesite. Hasta reiniciar: activado hasta que se apague la Miyoo. Siempre: siempre activado, para desarrolladores. Recomendado: Apagado.
+
+Claude keeps control of this Miyoo after you leave the app, and turns it on by itself when needed. Permissions set to ask cannot be asked while the app is closed.
+Claude mantiene el control de esta Miyoo después de que salgas de la app, y lo activa solo cuando lo necesite. Con la app cerrada, los permisos que preguntan no pueden preguntar.
