@@ -1684,6 +1684,8 @@ int ui_main(void)
             agent_start(!paired_before);
         else if (!paired_before)
             kill(running, SIGUSR1);
+        /* Wi-Fi was already on: look for a new version now (once per power-on) */
+        spawn_self("update.out", "update", "check", "--auto");
     }
 
     if (getenv("CA_UI_SCREEN"))
@@ -1713,7 +1715,9 @@ int ui_main(void)
             update_get("state", ust, sizeof(ust));
             update_get("version", uv, sizeof(uv));
             read_small("/tmp/claude_agent_update_later", later, sizeof(later));
-            if (!strcmp(ust, "available") && u.dlg == DLG_NONE && u.upd_wait != 2 &&
+            /* (a check started from the settings is on screen as "Checking...": replace it too) */
+            if (!strcmp(ust, "available") && (u.dlg == DLG_NONE || (u.dlg == DLG_UPDINFO && u.upd_wait == 1)) &&
+                u.upd_wait != 2 &&
                 (u.upd_wait == 1 || strcmp(later, uv))) {
                 u.dlg = DLG_UPDATE;
                 u.upd_wait = 0;

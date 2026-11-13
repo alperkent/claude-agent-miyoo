@@ -1,14 +1,6 @@
-First public release.
+Fixes for updates.
 
-**Install:** download `ClaudeAgent-v1.0.0.zip` below, extract it to the root of the SD card, and open **Apps > Claude Agent** on the Miyoo. It shows how to connect your Claude account (only once, from your phone). Needs a Miyoo Mini Plus or Mini Flip with OnionOS or RedOnion, and Wi-Fi.
+- The app now looks for a new version as soon as it opens, also when Wi-Fi was already on (before, it only looked when Wi-Fi connected while the app was open).
+- *Settings > Check for updates* now shows the new version as soon as it is found (before, the "Checking for updates..." window stayed on screen until it was closed).
 
-**What it does**
-- Claude can see the screen, read and change files, press buttons and run commands on your Miyoo, to find and fix problems or set things up for you.
-- Permissions by type (ask every time, ask once, don't ask), asked on the Miyoo, with warnings before lowering the security.
-- Claude shows its plan on the Miyoo before big changes.
-- Every change is backed up and can be undone from the settings; old copies are cleaned up automatically.
-- Developer tools: downloads, launching games with crash reports, exact button replay, timed screenshots, performance monitor, log watcher, folder snapshots, and plugins.
-- English, Português (Brasil) and Español, following the system language.
-- Checks for updates by itself.
-
-Unofficial community project, not made or endorsed by Anthropic. Claude is an AI and can make mistakes: back up your SD card first.
+**Install:** download `ClaudeAgent-v1.0.1.zip` below and extract it to the root of the SD card, or, if you already have Claude Agent, update from the app: *Settings > Check for updates*.
