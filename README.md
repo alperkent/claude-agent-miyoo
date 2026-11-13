@@ -102,7 +102,7 @@ The app is written in C, with no libraries besides the ones `build.sh` downloads
 2. Inside it, run `sh build.sh`. The app folder is written to `package/App/ClaudeAgent/`.
 3. `make_release.sh` builds and packs the release zip.
 
-To use your own relay: `server/deploy.sh` publishes it on your Cloudflare account (the free plan is enough) and writes its address to `server.txt`; the next build uses that address. `UPDATE_REPO` (or `update_repo.txt`) sets where the app looks for updates. GitHub Actions builds the app without Docker on your computer; see [docs/SELF_HOSTING.md](docs/SELF_HOSTING.md).
+To use your own relay: `node server/deploy.mjs` publishes it on your Cloudflare account (the free plan is enough) and writes its address to `server.txt`; the next build uses that address. `UPDATE_REPO` (or `update_repo.txt`) sets where the app looks for updates. GitHub Actions builds the app without Docker on your computer; see [docs/SELF_HOSTING.md](docs/SELF_HOSTING.md).
 
 ## Credits
 
